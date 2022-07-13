@@ -1,0 +1,13 @@
+aiofiles
+bcrypt
+cryptography
+fastapi
+openpyxl
+passlib
+pydantic
+pydantic[email]
+pymongo
+pymongo[SRV]
+python-jose
+python-multipart
+uvicorn
