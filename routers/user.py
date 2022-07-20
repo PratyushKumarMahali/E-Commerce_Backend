@@ -3,7 +3,6 @@ from fastapi import APIRouter
 from authentications import hashing
 from config import database, helpers
 from models.user import User
-from routers import image
 
 router = APIRouter()
 
@@ -12,10 +11,8 @@ router = APIRouter()
 @router.post('/user_register',tags =['User'])
 def create_user(request:User):
    hashed_pass = hashing.Hash.bcrypt(request.password)
-   profile_picture = image.profile_picture(request.image)
    user_object = dict(request)
    user_object["password"] = hashed_pass
-   user_object["image"] = profile_picture
    user_id = database.db["User"].insert_one(user_object)
    return {"profile":"created"}
 
